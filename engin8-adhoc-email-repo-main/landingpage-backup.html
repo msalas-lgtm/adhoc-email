@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>$25 AI Amazon Image Conversion Starter Pack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #01060f;
+      color: #fff;
+    }
+
+    .page { width: 100%; overflow: hidden; }
+
+    .inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 80px;
+    }
+
+    /* ─── DIVIDER ─── */
+    .sec-div {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    }
+
+    /* ════════════════════════════════════════════
+       SECTION 1 — HERO
+    ════════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      padding: 80px 0 72px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(6,15,36,0.82) 0%, rgba(11,28,71,0.7) 50%, rgba(7,18,46,0.9) 100%),
+        radial-gradient(ellipse 100% 70% at 50% -10%, rgba(6,182,212,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 92% 110%, rgba(251,191,36,0.1) 0%, transparent 55%),
+        url('Eureka-Hero-Desktop.webp') center/cover no-repeat,
+        linear-gradient(168deg, #060f24 0%, #0b1c47 45%, #07122e 100%);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 8%; right: 8%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(6,182,212,0.6), rgba(251,191,36,0.45), transparent);
+    }
+    .hero-inner { position: relative; z-index: 2; }
+    .hero .inner { max-width: 100%; padding: 0 64px; }
+
+    .hero-title {
+      font-size: 52px;
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -1px;
+      color: #fbbf24;
+      text-shadow: 0 0 60px rgba(251,191,36,0.22), 0 2px 0 rgba(0,0,0,0.5);
+      text-align: center;
+      margin-bottom: 52px;
+      text-transform: uppercase;
+    }
+
+    .hero-body {
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* BA images */
+    .ba-col { display: flex; flex-direction: column; gap: 18px; }
+    .ba-row {
+      display: grid;
+      grid-template-columns: 1fr 72px 1fr;
+      align-items: center;
+    }
+    .ba-item { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .ba-float-label {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 100px;
+      margin-left: 6px;
+    }
+    .ba-float-label.before { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.14); }
+    .ba-float-label.after  { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.35); }
+    .ba-img-box {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .ba-img-box.before { border: 1px solid rgba(255,255,255,0.14); opacity: 0.88; box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+    .ba-img-box.after  { border: 1px solid rgba(251,191,36,0.4); box-shadow: 0 0 0 1px rgba(251,191,36,0.18), 0 12px 40px rgba(0,0,0,0.5), 0 0 50px rgba(251,191,36,0.1); }
+    .ba-arrow-col { display: flex; align-items: center; justify-content: center; padding-top: 28px; }
+    .ba-arrow-btn {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      display: flex; align-items: center; justify-content: center;
+      color: #0d1844; font-size: 26px; font-weight: 900;
+      box-shadow: 0 4px 20px rgba(251,191,36,0.6); flex-shrink: 0;
+    }
+    .ba-captions { display: grid; grid-template-columns: 1fr 72px 1fr; }
+    .ba-cap { font-size: 13px; line-height: 1.5; text-align: center; padding: 0 8px; font-style: italic; }
+    .ba-cap.before { color: rgba(255,255,255,0.38); }
+    .ba-cap.after  { color: rgba(251,191,36,0.75); }
+
+    /* Checklist */
+    .check-col { display: flex; flex-direction: column; gap: 16px; padding-top: 38px; }
+    .check-row { display: flex; align-items: flex-start; gap: 14px; }
+    .check-tick {
+      width: 22px; height: 22px; min-width: 22px;
+      border-radius: 50%; background: #4ade80;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px; box-shadow: 0 3px 12px rgba(74,222,128,0.45); flex-shrink: 0;
+    }
+    .check-tick svg { width: 11px; height: 11px; }
+    .check-txt { font-size: 16px; color: #cbd5e1; line-height: 1.5; font-weight: 500; }
+    .hero-note {
+      margin-top: 32px;
+      background: rgba(251,191,36,0.07);
+      border: 1px solid rgba(251,191,36,0.22);
+      border-left: 4px solid rgba(251,191,36,0.65);
+      border-radius: 10px;
+      padding: 14px 20px;
+      font-size: 14px;
+      color: rgba(251,191,36,0.8);
+      line-height: 1.6;
+    }
+    .hero-note b { color: #fbbf24; }
+
+    /* ════════════════════════════════════════════
+       SECTION 2 — BASE OFFER
+    ════════════════════════════════════════════ */
+    .base-offer {
+      padding: 80px 0;
+      background: linear-gradient(160deg, #090f1e 0%, #0b1a2e 100%);
+    }
+    .section-label {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .section-label::before, .section-label::after {
+      content: ''; display: block; width: 40px; height: 2px; border-radius: 1px;
+    }
+    .section-label.teal { color: #06b6d4; }
+    .section-label.teal::before, .section-label.teal::after { background: #06b6d4; opacity: .35; }
+    .section-label.gold  { color: #fbbf24; }
+    .section-label.gold::before,  .section-label.gold::after  { background: #fbbf24; opacity: .35; }
+
+    .section-headline {
+      font-size: 34px;
+      font-weight: 800;
+      color: #f1f5f9;
+      letter-spacing: -0.4px;
+      line-height: 1.2;
+      margin-bottom: 48px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .section-headline .pr { color: #f87171; font-weight: 900; }
+    .section-headline .pg { color: #fbbf24; font-weight: 900; }
+
+    .feat-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .feat-card {
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      padding: 28px 16px 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      text-align: center;
+      transition: border-color .2s, background .2s, transform .2s;
+    }
+    .feat-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(6,182,212,0.3); transform: translateY(-4px); }
+    .feat-icon { width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; }
+    .feat-icon.teal { background: rgba(6,182,212,0.12); }
+    .feat-icon svg { width: 28px; height: 28px; }
+    .feat-img {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(6,182,212,0.06);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 0 1px rgba(6,182,212,0.08);
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+    .feat-img::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 45%, rgba(6,15,36,0.6) 100%);
+      z-index: 1; pointer-events: none;
+    }
+    .feat-img img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform .6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .feat-card:hover .feat-img img { transform: scale(1.08); }
+    .feat-card:hover .feat-img {
+      box-shadow: 0 14px 36px rgba(6,182,212,0.25), 0 0 0 1px rgba(6,182,212,0.3);
+    }
+    .feat-label { font-size: 12px; color: #94a3b8; line-height: 1.5; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ════════════════════════════════════════════
+       SECTION 3 — OFFER OFFER (image thumbnails)
+    ════════════════════════════════════════════ */
+    .offer-offer {
+      position: relative;
+      padding: 80px 0;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 100% 70% at 50% -10%, rgba(6,182,212,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 92% 110%, rgba(251,191,36,0.14) 0%, transparent 55%),
+        linear-gradient(168deg, #060f24 0%, #0b1c47 45%, #07122e 100%);
+    }
+    .offer-offer::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    .offer-offer::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 8%; right: 8%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(6,182,212,0.6), rgba(251,191,36,0.45), transparent);
+    }
+    .offer-offer .inner { position: relative; z-index: 2; }
+    .upsell-thumbs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .upsell-thumb {
+      border-radius: 16px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      aspect-ratio: 1;
+      transition: transform .2s, border-color .2s;
+    }
+    .upsell-thumb:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.18); }
+    .upsell-thumb.gold-border { border-color: rgba(251,191,36,0.3); }
+    .upsell-thumb.gold-border:hover { border-color: rgba(251,191,36,0.6); }
+
+    /* ════════════════════════════════════════════
+       SECTION 4 — OFFER STACK
+    ════════════════════════════════════════════ */
+    .offer-stack {
+      padding: 100px 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 50%, rgba(6,182,212,0.06) 0%, transparent 60%),
+        linear-gradient(168deg, #040d1e 0%, #060e22 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .offer-stack::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    .offer-stack-inner { position: relative; z-index: 2; }
+
+    .stack-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 48px;
+    }
+    .stack-col-title {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* ─── Step cards ─── */
+    .stack-steps { display: flex; flex-direction: column; gap: 0; }
+
+    .stack-step {
+      border-radius: 16px;
+      padding: 26px 28px;
+      border: 1px solid rgba(6,182,212,0.22);
+      background: rgba(6,182,212,0.06);
+      transition: border-color .2s, background .2s;
+    }
+    .stack-step:hover { background: rgba(6,182,212,0.1); border-color: rgba(6,182,212,0.4); }
+    .stack-step.bundle {
+      border-color: rgba(251,191,36,0.3);
+      background: rgba(251,191,36,0.05);
+    }
+    .stack-step.bundle:hover { background: rgba(251,191,36,0.09); border-color: rgba(251,191,36,0.5); }
+
+    .stack-step-tag {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #06b6d4;
+      margin-bottom: 6px;
+    }
+    .stack-step.bundle .stack-step-tag { color: #fbbf24; }
+
+    .stack-step-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #f1f5f9;
+      letter-spacing: -0.2px;
+      line-height: 1.3;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .stack-step-title .price { color: #fbbf24; }
+
+    .stack-step-sub {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.5);
+      background: rgba(6,182,212,0.1);
+      border: 1px solid rgba(6,182,212,0.15);
+      border-radius: 6px;
+      padding: 6px 12px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .stack-step.bundle .stack-step-sub {
+      background: rgba(251,191,36,0.08);
+      border-color: rgba(251,191,36,0.2);
+      color: rgba(251,191,36,0.8);
+    }
+
+    .stack-step-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+    }
+    .stack-step-desc ul { list-style: none; margin-top: 8px; display: flex; flex-direction: column; gap: 4px; }
+    .stack-step-desc ul li::before { content: '· '; color: #fbbf24; font-weight: 700; }
+
+    /* ─── Accordion ─── */
+    .acc-step { cursor: pointer; }
+    .step-hd {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .step-chev {
+      color: #06b6d4;
+      font-size: 18px;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 4px;
+      transition: transform .3s ease;
+    }
+    .bundle .step-chev { color: #fbbf24; }
+    .acc-step.active-step .step-chev { transform: rotate(180deg); }
+    .step-bd {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height .35s ease, opacity .25s ease, margin-top .35s ease;
+      margin-top: 0;
+    }
+    .acc-step.active-step .step-bd {
+      max-height: 400px;
+      opacity: 1;
+      margin-top: 12px;
+    }
+
+    .stack-arrow {
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      color: #06b6d4;
+      font-size: 22px;
+      opacity: .6;
+    }
+
+    /* ─── Upsell descriptions ─── */
+    .upsell-items { display: flex; flex-direction: column; gap: 0; }
+
+    .upsell-item {
+      padding: 26px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .upsell-item:first-child { padding-top: 0; }
+
+    .upsell-item-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(6,182,212,0.7);
+      margin-bottom: 8px;
+    }
+    .upsell-item-body {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
+    }
+    .upsell-item-body ul { list-style: none; margin-top: 8px; display: flex; flex-direction: column; gap: 3px; }
+    .upsell-item-body ul li { display: flex; gap: 8px; }
+    .upsell-item-body ul li::before { content: '•'; color: #06b6d4; flex-shrink: 0; }
+
+    /* ─── Checkout panel ─── */
+    .checkout-panel {
+      margin-top: 32px;
+      background: #071628;
+      border: 1px solid rgba(6,182,212,0.25);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    .checkout-panel-header {
+      background: rgba(6,182,212,0.12);
+      border-bottom: 1px solid rgba(6,182,212,0.2);
+      padding: 14px 24px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #06b6d4;
+      text-align: center;
+    }
+    .checkout-panel-body { padding: 24px; }
+
+    .checkout-intro {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.55;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .checkout-intro strong { color: #fff; }
+
+    .checkout-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+    .checkout-line-label { color: #94a3b8; font-weight: 500; }
+    .checkout-line-price { color: #f87171; font-weight: 700; white-space: nowrap; }
+    .checkout-line.strikeout { opacity: 0.45; text-decoration: line-through; }
+    .co-line, #co-bundle { cursor: pointer; }
+
+    .checkout-total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0 16px;
+      margin-top: 4px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .checkout-total-label { font-size: 15px; font-weight: 700; color: #fff; }
+    .checkout-total-price { font-size: 28px; font-weight: 900; color: #fbbf24; letter-spacing: -1px; }
+
+    .checkout-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .checkout-sub strong { color: rgba(251,191,36,0.7); }
+
+    .btn-checkout-panel {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      color: #0d1844;
+      font-size: 16px;
+      font-weight: 900;
+      padding: 16px 24px;
+      border-radius: 12px;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(251,191,36,0.4);
+      transition: transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .18s;
+      letter-spacing: -0.2px;
+    }
+    .btn-checkout-panel:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 12px 30px rgba(251,191,36,0.5); }
+
+    .checkout-fine {
+      font-size: 10.5px;
+      color: rgba(255,255,255,0.25);
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+
+    /* ════════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════════ */
+    .footer {
+      background: #010408;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 32px 80px;
+      text-align: center;
+    }
+    .footer-logo { font-size: 20px; font-weight: 900; color: rgba(255,255,255,0.35); letter-spacing: -0.5px; }
+    .footer-logo .gld { color: rgba(251,191,36,0.5); }
+
+    /* ════════════════════════════════════════════
+       ENHANCEMENTS
+    ════════════════════════════════════════════ */
+
+    /* Subtle entrance */
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-rating, .hero-title, .hero-body, .hero-cta { animation: fade-up .7s ease-out both; }
+    .hero-title { animation-delay: .08s; }
+    .hero-body  { animation-delay: .18s; }
+    .hero-cta   { animation-delay: .28s; }
+
+    /* Hero rating / social proof */
+    .hero-rating {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.65);
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    .hero-rating .stars {
+      color: #fbbf24;
+      letter-spacing: 3px;
+      font-size: 15px;
+      text-shadow: 0 0 14px rgba(251,191,36,0.55);
+    }
+    .hero-rating .pipe { color: rgba(255,255,255,0.2); }
+    .hero-rating .avatars {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 4px;
+    }
+    .hero-rating .av {
+      width: 26px; height: 26px; border-radius: 50%;
+      border: 2px solid #0b1c47;
+      margin-left: -8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      object-fit: cover;
+      display: inline-block;
+      background: #1e293b;
+    }
+    .hero-rating .av:first-child { margin-left: 0; }
+
+    /* Hero CTA */
+    .hero-cta {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .btn-hero {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #0d1844;
+      font-size: 16px;
+      font-weight: 900;
+      padding: 17px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 8px 28px rgba(251,191,36,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
+      transition: transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .2s;
+      letter-spacing: -0.2px;
+    }
+    .btn-hero:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(251,191,36,0.55); }
+    .btn-hero .arrow { transition: transform .2s; }
+    .btn-hero:hover .arrow { transform: translateX(4px); }
+    .hero-cta-sub {
+      font-size: 11.5px;
+      text-align: center;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.4px;
+    }
+
+    /* Section subtitle */
+    .section-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.5);
+      max-width: 640px;
+      margin: -32px auto 44px;
+      text-align: center;
+      line-height: 1.65;
+    }
+
+    /* Feat card number badge */
+    .feat-card { position: relative; }
+    .feat-num {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      font-size: 10px;
+      font-weight: 800;
+      color: rgba(6,182,212,0.5);
+      letter-spacing: 1px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Offer-offer thumb wrapper with label */
+    .thumb-wrap { display: flex; flex-direction: column; gap: 10px; }
+    .thumb-label {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+    }
+    .thumb-wrap.gold .thumb-label { color: rgba(251,191,36,0.72); }
+
+    /* Active accordion glow */
+    .acc-step.active-step {
+      border-color: rgba(6,182,212,0.55);
+      background: rgba(6,182,212,0.1);
+      box-shadow: 0 0 0 1px rgba(6,182,212,0.2), 0 8px 28px rgba(6,182,212,0.18);
+    }
+    .acc-step.bundle.active-step {
+      border-color: rgba(251,191,36,0.55);
+      background: rgba(251,191,36,0.1);
+      box-shadow: 0 0 0 1px rgba(251,191,36,0.25), 0 8px 28px rgba(251,191,36,0.18);
+    }
+
+    /* Best value badge on bundle */
+    #co-bundle { position: relative; overflow: visible; }
+    #co-bundle::before {
+      content: 'BEST VALUE';
+      position: absolute;
+      top: -8px;
+      right: 14px;
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #0d1844;
+      font-size: 8.5px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      padding: 3px 9px;
+      border-radius: 100px;
+      box-shadow: 0 3px 10px rgba(251,191,36,0.45);
+      z-index: 1;
+    }
+
+    /* Trust badges */
+    .trust-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10.5px;
+      color: rgba(255,255,255,0.42);
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    .trust-item svg {
+      width: 12px; height: 12px;
+      stroke: rgba(74,222,128,0.75);
+      fill: none;
+      stroke-width: 2;
+      flex-shrink: 0;
+    }
+
+    /* Enhanced footer */
+    .footer { padding: 44px 80px 30px; }
+    .footer-tagline {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      margin: 12px auto 20px;
+      line-height: 1.6;
+      max-width: 460px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 16px;
+      font-size: 12px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color .2s;
+      font-weight: 500;
+    }
+    .footer-links a:hover { color: rgba(251,191,36,0.75); }
+    .footer-copy {
+      font-size: 10.5px;
+      color: rgba(255,255,255,0.22);
+      letter-spacing: 0.3px;
+    }
+
+    /* ════════════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════════════ */
+    @media (max-width: 1440px) { .inner { padding: 0 60px; } .hero .inner { padding: 0 48px; } }
+    @media (max-width: 1100px) {
+      .inner { padding: 0 40px; }
+      .hero .inner { padding: 0 36px; }
+      .hero-title { font-size: 42px; }
+      .hero-body { grid-template-columns: 1fr 360px; gap: 48px; }
+      .ba-row, .ba-captions { grid-template-columns: 1fr 56px 1fr; }
+      .ba-arrow-btn { width: 44px; height: 44px; font-size: 22px; }
+      .section-headline { font-size: 28px; }
+      .stack-grid, .stack-header { grid-template-columns: 1fr; gap: 40px; }
+      .stack-col-title:last-child { display: none; }
+    }
+    @media (max-width: 860px) {
+      .inner { padding: 0 24px; }
+      .hero .inner { padding: 0 24px; }
+      .hero { padding: 56px 0 52px; }
+      .hero-title { font-size: 34px; margin-bottom: 36px; }
+      .hero-body { grid-template-columns: 1fr; gap: 32px; }
+      .check-col { padding-top: 0; }
+      .feat-row { grid-template-columns: repeat(3, 1fr); }
+      .upsell-thumbs { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .hero-title { font-size: 26px; }
+      .section-headline { font-size: 22px; }
+      .feat-row { grid-template-columns: repeat(2, 1fr); }
+      .footer { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══════════════════════════════════════
+       SECTION 1 — HERO / STARTER PACK
+  ══════════════════════════════════════ -->
+  <section class="hero">
+    <div class="inner hero-inner">
+      <div class="hero-rating">
+        <span class="avatars">
+          <img class="av" src="https://i.pravatar.cc/52?img=12" alt="Client" />
+          <img class="av" src="https://i.pravatar.cc/52?img=32" alt="Client" />
+          <img class="av" src="https://i.pravatar.cc/52?img=47" alt="Client" />
+        </span>
+        <span class="stars">★★★★★</span>
+        <span class="pipe">|</span>
+        <span>Trusted by 1,000+ Amazon sellers</span>
+      </div>
+      <h1 class="hero-title">$25 AI Amazon Image Conversion<br/>Starter Pack</h1>
+      <div class="hero-body">
+
+        <!-- Before / After -->
+        <div class="ba-col">
+          <div class="ba-row">
+            <div class="ba-item">
+              <div class="ba-float-label before">Before</div>
+              <div class="ba-img-box before">
+                <img src="https://placehold.co/600x480/eff2f5/9ca3af?text=Before" style="width:100%;display:block;" alt="Before" />
+              </div>
+            </div>
+            <div class="ba-arrow-col">
+              <div class="ba-arrow-btn">→</div>
+            </div>
+            <div class="ba-item">
+              <div class="ba-float-label after">After</div>
+              <div class="ba-img-box after">
+                <img src="https://placehold.co/600x480/dbeafe/1d40af?text=After+%E2%80%94+AI+Ready" style="width:100%;display:block;" alt="After" />
+              </div>
+            </div>
+          </div>
+          <div class="ba-captions">
+            <div class="ba-cap before">dull old, generic product box</div>
+            <div></div>
+            <div class="ba-cap after">updated AI Amazon listing image… clearer, sharper, and more conversion-ready.</div>
+          </div>
+        </div>
+
+        <!-- Checklist -->
+        <div class="check-col">
+          <div class="check-row">
+            <div class="check-tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#052e16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-txt">Updated AI Amazon images</div>
+          </div>
+          <div class="check-row">
+            <div class="check-tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#052e16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-txt">Built for one parent ASIN</div>
+          </div>
+          <div class="check-row">
+            <div class="check-tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#052e16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-txt">2-day delivery</div>
+          </div>
+          <div class="check-row">
+            <div class="check-tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#052e16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-txt">Includes meeting with an Amazon specialist</div>
+          </div>
+          <div class="check-row">
+            <div class="check-tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#052e16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-txt">Before/after examples</div>
+          </div>
+          <div class="check-row">
+            <div class="check-tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#052e16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-txt">Simple checkout</div>
+          </div>
+          <div class="hero-note">
+            <b>Note:</b> Covers one parent ASIN. Additional child variations cost extra.
+          </div>
+
+          <div class="hero-cta">
+            <a href="#offer-stack" class="btn-hero">Get the Starter Pack <span class="arrow">→</span></a>
+            <div class="hero-cta-sub">No subscription · 2-day delivery · Satisfaction guaranteed</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="sec-div"></div>
+
+  <!-- ══════════════════════════════════════
+       SECTION 2 — BASE OFFER
+  ══════════════════════════════════════ -->
+  <section class="base-offer">
+    <div class="inner">
+      <div class="section-label teal">Base Offer</div>
+      <div class="section-headline">Hero Image + 3 Supporting images — <span class="pr">$100</span></div>
+      <p class="section-sub">Everything you need to refresh a single parent ASIN with conversion-tuned AI imagery — delivered fast and reviewed by an Amazon specialist.</p>
+      <div class="feat-row">
+        <div class="feat-card">
+          <div class="feat-img">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=640&h=480&fit=crop&q=80" alt="Hero image" />
+          </div>
+          <div class="feat-label">1 updated AI<br/>hero image</div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-img">
+            <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=640&h=480&fit=crop&q=80" alt="Supporting images" />
+          </div>
+          <div class="feat-label">3 updated AI supporting<br/>listing images</div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-img">
+            <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=640&h=480&fit=crop&q=80" alt="2-day delivery" />
+          </div>
+          <div class="feat-label">2-day<br/>delivery</div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-img">
+            <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=640&h=480&fit=crop&q=80" alt="Amazon specialist" />
+          </div>
+          <div class="feat-label">Meeting with<br/>an Amazon specialist</div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-img">
+            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=640&h=480&fit=crop&q=80" alt="Parent ASIN" />
+          </div>
+          <div class="feat-label">Scope limited to<br/>one parent ASIN</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec-div"></div>
+
+  <!-- ══════════════════════════════════════
+       SECTION 3 — OFFER OFFER (thumbnails)
+  ══════════════════════════════════════ -->
+  <section class="offer-offer">
+    <div class="inner">
+      <div class="section-label gold">Built to Convert</div>
+      <div class="section-headline">Four images, four buying moments — one <span class="pg">$100</span> pack.</div>
+      <p class="section-sub">Each image is engineered for a specific scroll moment, from the first thumb-stopping impression to the final add-to-cart push.</p>
+      <div class="upsell-thumbs">
+        <div class="thumb-wrap">
+          <div class="upsell-thumb gold-border">
+            <img src="https://placehold.co/400x400/1e293b/64748b?text=Before" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Before" />
+          </div>
+          <div class="thumb-label">Before</div>
+        </div>
+        <div class="thumb-wrap gold">
+          <div class="upsell-thumb gold-border">
+            <img src="https://placehold.co/400x400/dbeafe/1d40af?text=Hero+Image" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Hero Image" />
+          </div>
+          <div class="thumb-label">Hero Image</div>
+        </div>
+        <div class="thumb-wrap">
+          <div class="upsell-thumb">
+            <img src="https://placehold.co/400x400/0f2040/06b6d4?text=Use+Case" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Use Case" />
+          </div>
+          <div class="thumb-label">Lifestyle</div>
+        </div>
+        <div class="thumb-wrap">
+          <div class="upsell-thumb">
+            <img src="https://placehold.co/400x400/0a1a0a/4ade80?text=Benefits" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Benefits" />
+          </div>
+          <div class="thumb-label">Benefits</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec-div"></div>
+
+  <!-- ══════════════════════════════════════
+       SECTION 4 — OFFER STACK
+  ══════════════════════════════════════ -->
+  <section class="offer-stack" id="offer-stack">
+    <div class="inner offer-stack-inner">
+
+      <!-- Column headers -->
+      <div class="stack-header">
+        <div class="stack-col-title">Offer Stack</div>
+      </div>
+
+      <div class="stack-grid">
+
+        <!-- LEFT: step cards (accordion) -->
+        <div class="stack-steps">
+
+          <!-- Step 1 -->
+          <div class="stack-step acc-step active-step">
+            <div class="step-hd">
+              <div>
+                <div class="stack-step-tag">1. Step 1: Base Purchase</div>
+                <div class="stack-step-title">Hero + 3 Supporting images — <span class="price">$100</span></div>
+              </div>
+              <span class="step-chev">▾</span>
+            </div>
+            <div class="step-bd">
+              <div class="stack-step-sub">Entry offer: updated AI Amazon image starter pack</div>
+            </div>
+          </div>
+
+          <div class="stack-arrow">↓</div>
+
+          <!-- Step 2 -->
+          <div class="stack-step acc-step">
+            <div class="step-hd">
+              <div>
+                <div class="stack-step-tag">2. Step 2: Order Bump</div>
+                <div class="stack-step-title">PLUS: 3 Additional Images — <span class="price">$59</span></div>
+              </div>
+              <span class="step-chev">▾</span>
+            </div>
+            <div class="step-bd">
+              <div class="stack-step-sub">Entry offer: updated AI Amazon image starter pack</div>
+            </div>
+          </div>
+
+          <div class="stack-arrow">↓</div>
+
+          <!-- Step 3 -->
+          <div class="stack-step acc-step">
+            <div class="step-hd">
+              <div>
+                <div class="stack-step-tag">Step 3: Upsell</div>
+                <div class="stack-step-title">PLUS: Senior Creative Director Edit — <span class="price">$199</span></div>
+              </div>
+              <span class="step-chev">▾</span>
+            </div>
+            <div class="step-bd">
+              <div class="stack-step-desc">Positioned as quality-control and conversion layer. AI builds quickly, CD ensures strategic alignment. Review for Rufus alignment, shopper clarity, visual accuracy, conversion features, and Amazon-ready messaging.</div>
+            </div>
+          </div>
+
+          <div class="stack-arrow">↓</div>
+
+          <!-- Step 4 -->
+          <div class="stack-step acc-step">
+            <div class="step-hd">
+              <div>
+                <div class="stack-step-tag">Step 4: Upsell</div>
+                <div class="stack-step-title">PLUS: Keyword Research + Copy Rewrites — <span class="price">$139</span></div>
+              </div>
+              <span class="step-chev">▾</span>
+            </div>
+            <div class="step-bd">
+              <div class="stack-step-desc">Positioned as search and message layer. Images create visual argument. Tells Rufus and shoppers what the product is, who it is for, and why it matters.</div>
+            </div>
+          </div>
+
+          <div class="stack-arrow">↓</div>
+
+          <!-- Step 5 -->
+          <div class="stack-step bundle acc-step">
+            <div class="step-hd">
+              <div>
+                <div class="stack-step-tag">Step 5: Bundle Option</div>
+                <div class="stack-step-title">FULL BUNDLE — <span class="price">$299</span></div>
+              </div>
+              <span class="step-chev">▾</span>
+            </div>
+            <div class="step-bd">
+              <div class="stack-step-sub">Get everything. Total secure value: $537 · Bundle price: $399</div>
+              <div class="stack-step-desc">
+                <ul>
+                  <li>Includes all items above</li>
+                  <li>7 total images</li>
+                  <li>2-day delivery</li>
+                  <li>Meeting with an Amazon specialist</li>
+                  <li>One parent ASIN — additional variations cost extra</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /stack-steps -->
+
+        <!-- RIGHT: upsell descriptions + checkout -->
+        <div>
+          <!-- CHECKOUT PANEL -->
+          <div class="checkout-panel">
+            <div class="checkout-panel-header">Checkout</div>
+            <div class="checkout-panel-body">
+
+              <div class="checkout-intro">
+                Get updated AI Amazon listing images starting at <strong>$25 per image</strong>
+              </div>
+
+              <div class="checkout-line" id="co-base">
+                <span class="checkout-line-label">Hero + 3 Supporting Images</span>
+                <span class="checkout-line-price">$100</span>
+              </div>
+              <div class="checkout-line starter-line">
+                <span class="checkout-line-label">PLUS: 3 Additional Images</span>
+                <span class="checkout-line-price">$59</span>
+              </div>
+              <div class="checkout-line starter-line">
+                <span class="checkout-line-label">PLUS: Senior Creative Director Edit</span>
+                <span class="checkout-line-price">$199</span>
+              </div>
+              <div class="checkout-line strikeout co-line" data-price="139">
+                <span class="checkout-line-label">PLUS: Keyword Research + Copy Rewrites</span>
+                <span class="checkout-line-price">$139</span>
+              </div>
+              <div class="checkout-line strikeout" id="co-bundle">
+                <span class="checkout-line-label">FULL BUNDLE</span>
+                <span class="checkout-line-price">$299</span>
+              </div>
+
+              <div class="checkout-total">
+                <span class="checkout-total-label">Total</span>
+                <span class="checkout-total-price" id="checkout-total">$100</span>
+              </div>
+
+              <div class="checkout-sub">
+                Get updated AI Amazon listing images starting at <strong>$25 per image</strong>
+              </div>
+
+              <a href="#" class="btn-checkout-panel">$100 for the Starter Pack →</a>
+
+              <div class="trust-row">
+                <div class="trust-item">
+                  <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  Secure checkout
+                </div>
+                <div class="trust-item">
+                  <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                  30-day guarantee
+                </div>
+                <div class="trust-item">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  2-day delivery
+                </div>
+              </div>
+
+              <div class="checkout-fine">First-time offer · Satisfaction guaranteed · One parent ASIN</div>
+            </div>
+          </div>
+
+        </div><!-- /right col -->
+      </div><!-- /stack-grid -->
+    </div><!-- /inner -->
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-logo">Pix<span class="gld">ii</span></div>
+    <p class="footer-tagline">Premium AI image conversion for Amazon sellers — built to lift CTR and conversions on every listing.</p>
+    <div class="footer-links">
+      <a href="#">How it works</a>
+      <a href="#">Examples</a>
+      <a href="#">Pricing</a>
+      <a href="#">Support</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+    <div class="footer-copy">© 2026 Pixii. All rights reserved.</div>
+  </footer>
+
+</div><!-- /page -->
+
+<script>
+  // Accordion
+  document.querySelectorAll('.acc-step').forEach(step => {
+    step.addEventListener('click', () => {
+      document.querySelectorAll('.acc-step').forEach(s => s.classList.remove('active-step'));
+      step.classList.add('active-step');
+    });
+  });
+
+  const baseLine = document.getElementById('co-base');
+  const addonLine = document.querySelector('.co-line');
+  const starterLines = document.querySelectorAll('.starter-line');
+  const bundleLine = document.getElementById('co-bundle');
+  const totalEl = document.getElementById('checkout-total');
+  const btn = document.querySelector('.btn-checkout-panel');
+
+  function bundleActive() { return !bundleLine.classList.contains('strikeout'); }
+
+  function recalc() {
+    if (bundleActive()) {
+      totalEl.textContent = '$299';
+      btn.textContent = 'FULL BUNDLE →';
+      return;
+    }
+    const total = addonLine.classList.contains('strikeout') ? 100 : 239;
+    totalEl.textContent = '$' + total;
+    btn.textContent = total === 100 ? '$100 for the Starter Pack →' : '$239 — Starter Pack + Keyword Research →';
+  }
+
+  // Step 4 (Keyword Research) toggle
+  addonLine.addEventListener('click', () => {
+    if (bundleActive()) {
+      bundleLine.classList.add('strikeout');
+      baseLine.classList.remove('strikeout');
+      starterLines.forEach(l => l.classList.remove('strikeout'));
+      addonLine.classList.add('strikeout');
+    }
+    addonLine.classList.toggle('strikeout');
+    recalc();
+  });
+
+  // Bundle toggle
+  bundleLine.addEventListener('click', () => {
+    if (bundleActive()) {
+      bundleLine.classList.add('strikeout');
+      baseLine.classList.remove('strikeout');
+      starterLines.forEach(l => l.classList.remove('strikeout'));
+      addonLine.classList.add('strikeout');
+    } else {
+      bundleLine.classList.remove('strikeout');
+      baseLine.classList.add('strikeout');
+      starterLines.forEach(l => l.classList.add('strikeout'));
+      addonLine.classList.add('strikeout');
+    }
+    recalc();
+  });
+</script>
+</body>
+</html>
