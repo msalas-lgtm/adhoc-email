@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>$25 AI Amazon Image Conversion Starter Pack</title>
-  <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32" />
-  <link rel="icon" type="image/png" href="favicon-192.png" sizes="192x192" />
-  <link rel="apple-touch-icon" href="favicon-192.png" />
+  <link rel="icon" type="image/png" href="assets/images/favicon-32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="assets/images/favicon-192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="assets/images/favicon-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -54,7 +54,7 @@
         linear-gradient(180deg, rgba(6,15,36,0.82) 0%, rgba(11,28,71,0.7) 50%, rgba(7,18,46,0.9) 100%),
         radial-gradient(ellipse 100% 70% at 50% -10%, rgba(6,182,212,0.15) 0%, transparent 60%),
         radial-gradient(ellipse 60% 50% at 92% 110%, rgba(251,191,36,0.1) 0%, transparent 55%),
-        url('Eureka-Hero-Desktop.webp') center/cover no-repeat,
+        url('assets/images/Eureka-Hero-Desktop.webp') center/cover no-repeat,
         linear-gradient(168deg, #060f24 0%, #0b1c47 45%, #07122e 100%);
     }
     .hero::before {
@@ -99,7 +99,7 @@
     .ba-col { display: flex; flex-direction: column; gap: 18px; }
     .ba-row {
       display: grid;
-      grid-template-columns: 1fr 12px 1fr;
+      grid-template-columns: 1fr 80px 1fr;
       align-items: center;
     }
     .ba-item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
@@ -150,15 +150,50 @@
       transition: background .2s, transform .2s;
     }
     .ba-dot.active { background: #fbbf24; transform: scale(1.3); }
-    .ba-arrow-col { display: flex; align-items: center; justify-content: center; padding-top: 28px; }
+    .ba-arrow-col { display: flex; align-items: center; justify-content: center; padding-top: 28px; position: relative; z-index: 10; }
     .ba-arrow-btn {
+      position: relative;
       width: 56px; height: 56px; border-radius: 50%;
-      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
       display: flex; align-items: center; justify-content: center;
-      color: #0d1844; font-size: 26px; font-weight: 900;
-      box-shadow: 0 4px 20px rgba(251,191,36,0.6); flex-shrink: 0;
+      color: #0d1844;
+      box-shadow: 0 4px 20px rgba(251,191,36,0.55), 0 0 0 0 rgba(251,191,36,0.35);
+      flex-shrink: 0;
+      transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .35s ease;
     }
-    .ba-captions { display: grid; grid-template-columns: 1fr 12px 1fr; }
+    .ba-arrow-btn::before {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 2px solid rgba(251,191,36,0.55);
+      animation: arrow-ring 2.2s ease-out infinite;
+    }
+    .ba-arrow-btn::after {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 2px solid rgba(251,191,36,0.3);
+      animation: arrow-ring 2.2s ease-out infinite .7s;
+    }
+    @keyframes arrow-ring {
+      0%   { transform: scale(1);    opacity: .8; }
+      100% { transform: scale(1.55); opacity: 0;  }
+    }
+    .ba-arrow-btn svg {
+      width: 22px; height: 22px;
+      animation: arrow-nudge 1.8s ease-in-out infinite;
+    }
+    @keyframes arrow-nudge {
+      0%, 100% { transform: translateX(0);   }
+      50%       { transform: translateX(4px); }
+    }
+    .ba-arrow-btn:hover {
+      transform: scale(1.12);
+      box-shadow: 0 8px 32px rgba(251,191,36,0.7);
+    }
+    .ba-captions { display: grid; grid-template-columns: 1fr 80px 1fr; }
     .ba-cap { font-size: 13px; line-height: 1.5; text-align: center; padding: 0 8px; font-style: italic; }
     .ba-cap.before { color: rgba(255,255,255,0.38); }
     .ba-cap.after  { color: rgba(251,191,36,0.75); }
@@ -1202,6 +1237,112 @@
     body.modal-open { overflow: hidden; }
 
     /* ════════════════════════════════════════════
+       FORM — VALIDATION & STATES
+    ════════════════════════════════════════════ */
+    button.btn-checkout-panel {
+      border: none; cursor: pointer;
+      font-family: inherit; width: 100%;
+    }
+    button.btn-checkout-panel:disabled {
+      opacity: 0.65; cursor: not-allowed;
+      transform: none !important;
+      box-shadow: 0 4px 16px rgba(251,191,36,0.25) !important;
+    }
+    .co-field input.is-error,
+    .co-field textarea.is-error {
+      border-color: rgba(248,113,113,0.65);
+      box-shadow: 0 0 0 3px rgba(248,113,113,0.12);
+    }
+    .co-field-error {
+      font-size: 11px; color: #f87171;
+      margin-top: 5px; font-weight: 500;
+      display: none;
+    }
+    .co-field-error.show { display: block; }
+    .form-submit-error {
+      font-size: 13px; color: #f87171;
+      text-align: center; margin-top: 14px;
+      padding: 10px 14px;
+      background: rgba(248,113,113,0.07);
+      border: 1px solid rgba(248,113,113,0.2);
+      border-radius: 8px;
+    }
+    .form-success {
+      padding: 32px 0 16px; text-align: center;
+    }
+    .form-success-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px;
+      box-shadow: 0 6px 22px rgba(74,222,128,0.4);
+    }
+    .form-success-title {
+      font-size: 20px; font-weight: 800; color: #f1f5f9;
+      margin-bottom: 10px; letter-spacing: -0.2px;
+    }
+    .form-success-body {
+      font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.65;
+    }
+
+    /* ════════════════════════════════════════════
+       FLOW SECTION — SEQUENTIAL ANIMATION
+       Cards 1→2→3→4→5 light up in a 3 s cycle.
+       Each connector pulses midway between its
+       two adjacent cards, reinforcing direction.
+    ════════════════════════════════════════════ */
+    @keyframes flow-icon-glow {
+      0%, 75%, 100% {
+        box-shadow: 0 6px 16px rgba(6,182,212,0.15), inset 0 1px 0 rgba(255,255,255,0.06);
+        background: linear-gradient(135deg, rgba(6,182,212,0.18) 0%, rgba(6,182,212,0.06) 100%);
+        border-color: rgba(6,182,212,0.28);
+        color: #06b6d4;
+      }
+      20%, 50% {
+        box-shadow: 0 0 0 4px rgba(6,182,212,0.12), 0 8px 32px rgba(6,182,212,0.55), inset 0 1px 0 rgba(255,255,255,0.14);
+        background: linear-gradient(135deg, rgba(6,182,212,0.38) 0%, rgba(6,182,212,0.14) 100%);
+        border-color: rgba(6,182,212,0.72);
+        color: #22d3ee;
+      }
+    }
+
+    @keyframes flow-connector-pulse {
+      0%, 100% { opacity: 0.25; }
+      50%       { opacity: 1; color: rgba(6,182,212,0.95); }
+    }
+
+    @keyframes flow-card-topline {
+      0%, 75%, 100% { opacity: 0.45; }
+      20%, 50%      { opacity: 1; }
+    }
+
+    /* 5 cards × 0.6 s offset = 3 s total cycle */
+    .feat-flow > .flow-card:nth-child(1) .flow-icon  { animation: flow-icon-glow    3s ease-in-out infinite 0.0s; }
+    .feat-flow > .flow-card:nth-child(3) .flow-icon  { animation: flow-icon-glow    3s ease-in-out infinite 0.6s; }
+    .feat-flow > .flow-card:nth-child(5) .flow-icon  { animation: flow-icon-glow    3s ease-in-out infinite 1.2s; }
+    .feat-flow > .flow-card:nth-child(7) .flow-icon  { animation: flow-icon-glow    3s ease-in-out infinite 1.8s; }
+    .feat-flow > .flow-card:nth-child(9) .flow-icon  { animation: flow-icon-glow    3s ease-in-out infinite 2.4s; }
+
+    /* Connectors pulse midway between their adjacent cards */
+    .feat-flow > .flow-connector:nth-child(2) { animation: flow-connector-pulse 3s ease-in-out infinite 0.3s; }
+    .feat-flow > .flow-connector:nth-child(4) { animation: flow-connector-pulse 3s ease-in-out infinite 0.9s; }
+    .feat-flow > .flow-connector:nth-child(6) { animation: flow-connector-pulse 3s ease-in-out infinite 1.5s; }
+    .feat-flow > .flow-connector:nth-child(8) { animation: flow-connector-pulse 3s ease-in-out infinite 2.1s; }
+
+    /* Top-line shimmer synced to each card */
+    .feat-flow > .flow-card:nth-child(1)::before { animation: flow-card-topline 3s ease-in-out infinite 0.0s; }
+    .feat-flow > .flow-card:nth-child(3)::before { animation: flow-card-topline 3s ease-in-out infinite 0.6s; }
+    .feat-flow > .flow-card:nth-child(5)::before { animation: flow-card-topline 3s ease-in-out infinite 1.2s; }
+    .feat-flow > .flow-card:nth-child(7)::before { animation: flow-card-topline 3s ease-in-out infinite 1.8s; }
+    .feat-flow > .flow-card:nth-child(9)::before { animation: flow-card-topline 3s ease-in-out infinite 2.4s; }
+
+    /* Extend reveal-child stagger for the 9 children in feat-flow */
+    .reveal-child.is-visible > *:nth-child(6) { transition-delay: .36s; }
+    .reveal-child.is-visible > *:nth-child(7) { transition-delay: .44s; }
+    .reveal-child.is-visible > *:nth-child(8) { transition-delay: .52s; }
+    .reveal-child.is-visible > *:nth-child(9) { transition-delay: .60s; }
+
+    /* ════════════════════════════════════════════
        RESPONSIVE
     ════════════════════════════════════════════ */
     @media (max-width: 1440px) { .inner { padding: 0 60px; } .hero .inner { padding: 0 48px; } }
@@ -1211,7 +1352,8 @@
       .hero-title { font-size: 42px; }
       .hero-body { grid-template-columns: 1fr 360px; gap: 48px; }
       .ba-row, .ba-captions { grid-template-columns: 1fr 56px 1fr; }
-      .ba-arrow-btn { width: 44px; height: 44px; font-size: 22px; }
+      .ba-arrow-btn { width: 44px; height: 44px; }
+      .ba-arrow-btn svg { width: 18px; height: 18px; }
       .section-headline { font-size: 28px; }
       .stack-grid, .stack-header { grid-template-columns: 1fr; gap: 40px; }
       .stack-col-title:last-child { display: none; }
@@ -1267,19 +1409,23 @@
             <div class="ba-item">
               <div class="ba-float-label before">Before</div>
               <div class="ba-img-box before">
-                <img src="hero-before.jpg" style="width:100%;display:block;" alt="Before" />
+                <img src="assets/images/hero-before.jpg" style="width:100%;display:block;" alt="Before" />
               </div>
             </div>
             <div class="ba-arrow-col">
-              <div class="ba-arrow-btn">→</div>
+              <div class="ba-arrow-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+                </svg>
+              </div>
             </div>
             <div class="ba-item">
               <div class="ba-float-label after">After</div>
               <div class="ba-img-box after" id="ba-after-slider">
-                <div class="ba-slide active"><img src="hero-after.jpg" alt="After 1" /></div>
-                <div class="ba-slide"><img src="hero-after-2.png" alt="After 2" /></div>
-                <div class="ba-slide"><img src="hero-after-3.png" alt="After 3" /></div>
-                <div class="ba-slide"><img src="hero-after-4.png" alt="After 4" /></div>
+                <div class="ba-slide active"><img src="assets/images/hero-after.jpg" alt="After 1" /></div>
+                <div class="ba-slide"><img src="assets/images/hero-after-2.png" alt="After 2" /></div>
+                <div class="ba-slide"><img src="assets/images/hero-after-3.png" alt="After 3" /></div>
+                <div class="ba-slide"><img src="assets/images/hero-after-4.png" alt="After 4" /></div>
                 <div class="ba-dots">
                   <button class="ba-dot active" data-i="0" aria-label="Slide 1"></button>
                   <button class="ba-dot" data-i="1" aria-label="Slide 2"></button>
@@ -1459,24 +1605,24 @@
   <section class="offer-offer">
     <div class="inner reveal">
       <div class="section-label gold">Built to Convert</div>
-      <div class="section-headline">Three images, four buying moments — one <span class="pg">$100</span> pack.</div>
+      <div class="section-headline">Three images, three buying moments — one <span class="pg">$100</span> pack.</div>
       <p class="section-sub">Each image is engineered for a specific scroll moment, from the first thumb-stopping impression to the final add-to-cart push.</p>
       <div class="upsell-thumbs reveal-child">
         <div class="thumb-wrap">
           <div class="upsell-thumb gold-border">
-            <img src="hero-before.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Before" />
+            <img src="assets/images/hero-before.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Before" />
           </div>
           <div class="thumb-label">Before</div>
         </div>
         <div class="thumb-wrap">
           <div class="upsell-thumb">
-            <img src="hero-after-2.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Lifestyle" />
+            <img src="assets/images/hero-after-2.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Lifestyle" />
           </div>
           <div class="thumb-label">Lifestyle</div>
         </div>
         <div class="thumb-wrap">
           <div class="upsell-thumb">
-            <img src="hero-after-3.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Benefits" />
+            <img src="assets/images/hero-after-3.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Benefits" />
           </div>
           <div class="thumb-label">Benefits</div>
         </div>
@@ -1511,38 +1657,56 @@
               <span class="checkout-total-price" id="checkout-total">$100</span>
             </div>
 
-            <div class="co-form">
-              <div class="co-form-row">
-                <div class="co-field">
-                  <label for="cf-firstname">First Name</label>
-                  <input type="text" id="cf-firstname" name="firstname" placeholder="John" autocomplete="given-name" />
-                </div>
-                <div class="co-field">
-                  <label for="cf-fullname">Full Name</label>
-                  <input type="text" id="cf-fullname" name="fullname" placeholder="John Doe" autocomplete="name" />
-                </div>
-              </div>
-              <div class="co-form-row">
-                <div class="co-field">
-                  <label for="cf-phone">Phone</label>
-                  <input type="tel" id="cf-phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel" />
-                </div>
-                <div class="co-field">
-                  <label for="cf-email">Email</label>
-                  <input type="email" id="cf-email" name="email" placeholder="you@company.com" autocomplete="email" />
-                </div>
-              </div>
-              <div class="co-field co-field-full">
-                <label for="cf-message">Message</label>
-                <textarea id="cf-message" name="message" placeholder="Tell us about your ASIN, product category, or any special requirements…"></textarea>
-              </div>
-            </div>
+            <!-- ── Zoho Web-to-Lead form ── -->
+            <div id="checkout-form-wrap">
+              <form id="checkout-form" novalidate
+                action="https://crm.zoho.com/crm/WebToLeadForm"
+                method="POST">
 
-            <div class="checkout-sub">
-              Get updated AI Amazon listing images starting at <strong>$25 per image</strong>
-            </div>
+                <!-- TODO: paste the Zoho-generated hidden fields below -->
+                <!-- <input type="hidden" name="xnQsjsdp" value="YOUR_AUTH_KEY" /> -->
+                <!-- <input type="hidden" name="xmIwtLD"  value="YOUR_FORM_URL" /> -->
+                <input type="hidden" name="actionType"  value="TGVhZHM=" />
+                <input type="hidden" name="returnURL"   value="" />
+                <input type="hidden" name="Lead Source" value="Landing Page — $100 Pack" />
 
-            <a href="#" class="btn-checkout-panel">$100 for the Starter Pack →</a>
+                <div class="co-form">
+                  <div class="co-form-row">
+                    <div class="co-field">
+                      <label for="cf-firstname">First Name <span style="color:#f87171;">*</span></label>
+                      <input type="text" id="cf-firstname" name="First Name" placeholder="John" autocomplete="given-name" required />
+                      <span class="co-field-error" id="err-firstname">First name is required.</span>
+                    </div>
+                    <div class="co-field">
+                      <label for="cf-lastname">Last Name</label>
+                      <input type="text" id="cf-lastname" name="Last Name" placeholder="Doe" autocomplete="family-name" />
+                    </div>
+                  </div>
+                  <div class="co-form-row">
+                    <div class="co-field">
+                      <label for="cf-phone">Phone <span style="color:#f87171;">*</span></label>
+                      <input type="tel" id="cf-phone" name="Phone" placeholder="+1 (555) 000-0000" autocomplete="tel" required />
+                      <span class="co-field-error" id="err-phone">Phone number is required.</span>
+                    </div>
+                    <div class="co-field">
+                      <label for="cf-email">Email <span style="color:#f87171;">*</span></label>
+                      <input type="email" id="cf-email" name="Email" placeholder="you@company.com" autocomplete="email" required />
+                      <span class="co-field-error" id="err-email">Please enter a valid email address.</span>
+                    </div>
+                  </div>
+                  <div class="co-field co-field-full">
+                    <label for="cf-message">Message / ASIN details</label>
+                    <textarea id="cf-message" name="Description" placeholder="Tell us about your ASIN, product category, or any special requirements…"></textarea>
+                  </div>
+                </div>
+
+                <div class="checkout-sub">
+                  Get updated AI Amazon listing images starting at <strong>$25 per image</strong>
+                </div>
+
+                <button type="submit" class="btn-checkout-panel">$100 for the Starter Pack →</button>
+              </form>
+            </div>
 
             <div class="trust-row">
               <div class="trust-item">
@@ -1570,7 +1734,7 @@
        FOOTER
   ══════════════════════════════════════ -->
   <footer class="footer">
-    <div class="footer-logo"><a href="https://engin8.io/" target="_blank" rel="noopener"><img src="engin8-logo.webp" alt="Engin8" /></a></div>
+    <div class="footer-logo"><a href="https://engin8.io/" target="_blank" rel="noopener"><img src="assets/images/engin8-logo.webp" alt="Engin8" /></a></div>
     <p class="footer-tagline">Premium AI image conversion for Amazon sellers — built to lift CTR and conversions on every listing.</p>
     <div class="footer-links">
       <a href="#">How it works</a>
@@ -1623,6 +1787,103 @@
     slider.addEventListener('mouseenter', stop);
     slider.addEventListener('mouseleave', start);
     start();
+  })();
+
+  // Checkout form — validation + Zoho Web-to-Lead AJAX submit
+  (function () {
+    const form = document.getElementById('checkout-form');
+    if (!form) return;
+
+    const rules = {
+      'cf-firstname': {
+        errId: 'err-firstname',
+        test: v => v.trim().length > 0,
+        msg:  'First name is required.'
+      },
+      'cf-phone': {
+        errId: 'err-phone',
+        test: v => v.trim().length > 0,
+        msg:  'Phone number is required.'
+      },
+      'cf-email': {
+        errId: 'err-email',
+        test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
+        msg:  'Please enter a valid email address.'
+      }
+    };
+
+    function validateField(id) {
+      const input  = document.getElementById(id);
+      const errEl  = document.getElementById(rules[id].errId);
+      const valid  = rules[id].test(input.value);
+      input.classList.toggle('is-error', !valid);
+      if (errEl) errEl.classList.toggle('show', !valid);
+      return valid;
+    }
+
+    Object.keys(rules).forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('blur',  () => validateField(id));
+      el.addEventListener('input', () => { if (el.classList.contains('is-error')) validateField(id); });
+    });
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const allValid = Object.keys(rules).map(validateField).every(Boolean);
+      if (!allValid) {
+        // Scroll to first error
+        const first = form.querySelector('.is-error');
+        if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      const btn      = form.querySelector('.btn-checkout-panel');
+      const origText = btn.textContent;
+      btn.disabled   = true;
+      btn.textContent = 'Sending…';
+
+      // Remove any previous submit error
+      const prevErr = form.querySelector('.form-submit-error');
+      if (prevErr) prevErr.remove();
+
+      try {
+        const res = await fetch(form.action, {
+          method:  'POST',
+          body:    new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        // Zoho redirects on success — treat any non-5xx as ok
+        if (res.ok || res.type === 'opaque') {
+          document.getElementById('checkout-form-wrap').innerHTML = `
+            <div class="form-success">
+              <div class="form-success-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                  stroke="#fff" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 6 9 17l-5-5"/>
+                </svg>
+              </div>
+              <div class="form-success-title">You're all set!</div>
+              <p class="form-success-body">
+                We've received your order. An Amazon specialist will be
+                in touch within 24 hours to get started.
+              </p>
+            </div>`;
+        } else {
+          throw new Error('Server error');
+        }
+      } catch (_) {
+        btn.disabled    = false;
+        btn.textContent = origText;
+        const errEl = document.createElement('p');
+        errEl.className = 'form-submit-error';
+        errEl.textContent = 'Something went wrong — please try again or email us at hello@engin8.io.';
+        form.appendChild(errEl);
+        setTimeout(() => errEl.remove(), 7000);
+      }
+    });
   })();
 
 
