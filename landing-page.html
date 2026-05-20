@@ -916,22 +916,7 @@
       text-shadow: 0 2px 12px rgba(251,191,36,0.3);
     }
 
-    /* ─── Locked states for Step 2 + Payment until lead is captured ─── */
-    .co-step.is-locked,
-    .co-pay.is-locked {
-      opacity: 0.55;
-      filter: grayscale(0.2);
-      pointer-events: auto;
-    }
-    .co-step.is-locked .co-step-btn[aria-disabled="true"],
-    .co-pay.is-locked .btn-checkout-panel[aria-disabled="true"] {
-      cursor: not-allowed;
-      box-shadow: none;
-    }
-    .co-step.is-locked .co-step-btn[aria-disabled="true"]:hover,
-    .co-pay.is-locked .btn-checkout-panel[aria-disabled="true"]:hover {
-      transform: none;
-    }
+    /* ─── Locked states (reserved, not currently active) ─── */
 
     /* ─── Step 1 submit button ─── */
     .co-step-submit {
@@ -1855,26 +1840,20 @@
                     </div>
                   </div>
 
-                  <button type="submit" class="co-step-btn co-step-submit" id="co-submit-btn">
-                    Save &amp; Continue
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M5 12h14M13 5l7 7-7 7"/>
-                    </svg>
-                  </button>
                   <p class="form-submit-error" id="co-submit-error" style="display:none;"></p>
                 </div>
               </div>
             </form>
 
             <!-- STEP 2 — Book a meeting -->
-            <div class="co-step is-locked" id="co-step-2">
+            <div class="co-step" id="co-step-2">
               <div class="co-step-head">
                 <div class="co-step-num">2</div>
                 <div class="co-step-title">Book a quick onboarding call</div>
               </div>
               <div class="co-step-body">
                 <a href="https://calendly.com/engin8" target="_blank" rel="noopener"
-                   id="co-book-btn" class="co-step-btn" data-base-url="https://calendly.com/engin8" aria-disabled="true">
+                   id="co-book-btn" class="co-step-btn" data-base-url="https://calendly.com/engin8">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="3" y="4" width="18" height="18" rx="2"/>
                     <path d="M16 2v4M8 2v4M3 10h18"/>
@@ -1886,16 +1865,16 @@
             </div>
 
             <!-- PAYMENT (intentionally not labeled as a step) -->
-            <div class="co-pay is-locked" id="co-pay">
+            <div class="co-pay" id="co-pay">
               <div class="co-pay-row">
                 <div class="co-pay-meta">
                   <div class="co-pay-label">Payment</div>
-                  <div class="co-pay-sub">Per image · Pay securely via Stripe</div>
+                  <div class="co-pay-sub">Per image · Pay securely via Zoho</div>
                 </div>
                 <div class="co-pay-amount">$25</div>
               </div>
               <a href="#" id="co-pay-btn" class="btn-checkout-panel"
-                 data-payment-url="" target="_blank" rel="noopener" aria-disabled="true">
+                 data-payment-url="">
                 Pay $25 &rarr;
               </a>
             </div>
@@ -1981,21 +1960,18 @@
     start();
   })();
 
-  // Checkout — Zoho Web-to-Lead submit + pass-through to Calendly & Stripe
+  // Checkout — Zoho Web-to-Lead submit + redirect to Zoho payment
   (function () {
-    const form        = document.getElementById('checkout-form');
-    const asinInput   = document.getElementById('cf-asin');
-    const descMirror  = document.getElementById('cf-description');
-    const bookBtn     = document.getElementById('co-book-btn');
-    const payBtn      = document.getElementById('co-pay-btn');
-    const submitBtn   = document.getElementById('co-submit-btn');
-    const submitErr   = document.getElementById('co-submit-error');
-    const step1       = document.getElementById('co-step-1');
-    const step2       = document.getElementById('co-step-2');
-    const payBlock    = document.getElementById('co-pay');
+    const form       = document.getElementById('checkout-form');
+    const asinInput  = document.getElementById('cf-asin');
+    const descMirror = document.getElementById('cf-description');
+    const bookBtn    = document.getElementById('co-book-btn');
+    const payBtn     = document.getElementById('co-pay-btn');
+    const submitErr  = document.getElementById('co-submit-error');
+    const step1      = document.getElementById('co-step-1');
     if (!form || !asinInput || !bookBtn || !payBtn) return;
 
-    const ASIN_RE = /^[A-Z0-9]{10}$/;
+    const ASIN_RE  = /^[A-Z0-9]{10}$/;
     const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const rules = {
@@ -2029,7 +2005,6 @@
       });
     });
 
-    // ASIN-specific: force uppercase, mirror to Description, sync downstream links
     function getCleanAsin() {
       return (asinInput.value || '').trim().toUpperCase();
     }
@@ -2041,9 +2016,9 @@
     }
 
     function syncLinks() {
-      const asin = getCleanAsin();
+      const asin  = getCleanAsin();
       const valid = ASIN_RE.test(asin);
-      const calendlyBase = bookBtn.dataset.baseUrl || bookBtn.href;
+      const calendlyBase = bookBtn.dataset.baseUrl || bookBtn.getAttribute('href');
       bookBtn.href = valid ? appendAsin(calendlyBase, asin) : calendlyBase;
       const payBase = payBtn.dataset.paymentUrl || '';
       payBtn.href  = valid && payBase ? appendAsin(payBase, asin) : (payBase || '#');
@@ -2057,14 +2032,6 @@
       syncLinks();
     });
 
-    function unlockNextSteps() {
-      step1.classList.add('is-complete');
-      step2.classList.remove('is-locked');
-      payBlock.classList.remove('is-locked');
-      bookBtn.removeAttribute('aria-disabled');
-      payBtn.removeAttribute('aria-disabled');
-    }
-
     function showSubmitError(msg) {
       if (!submitErr) return;
       submitErr.textContent = msg;
@@ -2072,8 +2039,10 @@
       setTimeout(() => { submitErr.style.display = 'none'; }, 7000);
     }
 
-    form.addEventListener('submit', async function (e) {
+    // Pay button: validate → submit lead to Zoho CRM → redirect to Zoho payment
+    payBtn.addEventListener('click', async (e) => {
       e.preventDefault();
+
       const allValid = Object.keys(rules).map(validateField).every(Boolean);
       if (!allValid) {
         const first = form.querySelector('.is-error');
@@ -2081,59 +2050,34 @@
         return;
       }
 
-      // Ensure ASIN + description mirror are uppercased before submit
       asinInput.value = getCleanAsin();
       syncLinks();
 
-      const origLabel = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Saving…';
-      if (submitErr) submitErr.style.display = 'none';
+      const payUrl = payBtn.dataset.paymentUrl;
+      if (!payUrl) {
+        alert('Payment link is not configured yet. Add your Zoho payment link to the data-payment-url attribute on the Pay button.');
+        return;
+      }
 
-      // Detect placeholder Zoho keys — if blank, skip the network call so dev/testing still unlocks the next steps.
+      const origText = payBtn.textContent;
+      payBtn.textContent = 'Redirecting…';
+
       const xnq = form.querySelector('input[name="xnQsjsdp"]').value;
       const xmi = form.querySelector('input[name="xmIwtLD"]').value;
-      const hasZohoKeys = xnq && xmi;
 
-      try {
-        if (hasZohoKeys) {
-          // Zoho Web-to-Lead is cross-origin and returns an opaque redirect; use no-cors.
+      if (xnq && xmi) {
+        try {
           await fetch(form.action, {
             method: 'POST',
             mode:   'no-cors',
             body:   new FormData(form)
           });
-        }
-        unlockNextSteps();
-        submitBtn.innerHTML = '✓ Saved — choose next step below';
-        // Smooth-scroll to the now-unlocked Book step.
-        setTimeout(() => {
-          step2.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 250);
-      } catch (_) {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = origLabel;
-        showSubmitError('Something went wrong — please try again or email hello@engin8.io.');
+        } catch (_) {}
       }
-    });
 
-    function guardLockedClick(e, el) {
-      if (el.getAttribute('aria-disabled') === 'true') {
-        e.preventDefault();
-        showSubmitError('Please complete Step 1 first.');
-        step1.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        return true;
-      }
-      return false;
-    }
-
-    bookBtn.addEventListener('click', (e) => guardLockedClick(e, bookBtn));
-    payBtn.addEventListener('click', (e) => {
-      if (guardLockedClick(e, payBtn)) return;
-      if (!payBtn.dataset.paymentUrl) {
-        e.preventDefault();
-        alert('Payment link is not configured yet. Paste your Stripe Payment Link into the data-payment-url attribute on the Pay button.');
-      }
+      step1.classList.add('is-complete');
+      window.location.href = payBtn.href;
+      payBtn.textContent = origText;
     });
 
     syncLinks();
