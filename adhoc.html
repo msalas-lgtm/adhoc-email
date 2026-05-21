@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" style="background:#ffffff;">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" style="background:#f1f5f9;">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,6 +9,9 @@
   <meta name="supported-color-schemes" content="light" />
   <link rel="icon" type="image/png" href="/wp-content/uploads/2026/05/favicon-128x128-2.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="/wp-content/uploads/2026/05/favicon-128x128-2.png" sizes="192x192" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <title>$25 AI Amazon Image Conversion Starter Pack</title>
   <!--[if mso]>
   <noscript>
@@ -20,127 +23,205 @@
   </noscript>
   <![endif]-->
   <style>
-    /* Client resets */
     body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
     table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
     img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; display: block; }
     table { border-collapse: collapse !important; }
-    body { margin: 0 !important; padding: 0 !important; width: 100% !important; min-height: 100vh !important; background: #ffffff; }
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      min-height: 100vh !important;
+      background: #f1f5f9;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    table, td, p, span, a, div, center {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    }
     a { text-decoration: none; }
 
-    /* Tablet + Mobile */
+    .btn-cta-primary { white-space: nowrap; }
+    .btn-cta a { box-sizing: border-box; -webkit-box-sizing: border-box; }
+
     @media screen and (max-width: 640px) {
       .container { width: 100% !important; max-width: 100% !important; }
-      .px-32 { padding-left: 16px !important; padding-right: 16px !important; }
-      .hero-title { font-size: 22px !important; line-height: 1.15 !important; }
-      .card-inner { padding: 20px 16px !important; }
+      .outer-pad { padding: 20px 12px !important; }
+      .px-32 { padding-left: 12px !important; padding-right: 12px !important; }
+      .subheader-pad { padding: 0 16px 20px 16px !important; }
+      .card-inner { padding: 18px 14px !important; }
+      .rating-stars { font-size: 20px !important; letter-spacing: 2px !important; }
+      .rating-text { font-size: 14px !important; }
+      .card-eyebrow { font-size: 10px !important; }
+      .card-headline { font-size: 15px !important; line-height: 1.5 !important; }
+      .hero-img { width: 100% !important; max-width: 100% !important; height: auto !important; }
+      .benefits-bar td { padding: 12px 14px !important; font-size: 11px !important; line-height: 1.7 !important; }
+      .benefit-dot { display: none !important; }
+      .benefit-item { display: block !important; margin: 2px 0 !important; }
+      .footer-text { max-width: 100% !important; font-size: 11.5px !important; }
     }
 
-    /* Mobile */
     @media screen and (max-width: 480px) {
-      .hero-title { font-size: 19px !important; }
-      .card-inner { padding: 16px 12px !important; }
-      .card-headline { font-size: 14px !important; }
-      .btn-cta a { font-size: 13px !important; padding: 14px 10px !important; }
+      .outer-pad { padding: 16px 10px !important; }
+      .px-32 { padding-left: 10px !important; padding-right: 10px !important; padding-bottom: 24px !important; }
+      .subheader-pad { padding: 0 12px 16px 12px !important; }
+      .card-inner { padding: 14px 10px !important; }
+      .rating-stars { font-size: 18px !important; letter-spacing: 1px !important; }
+      .rating-text { font-size: 13px !important; }
+      .card-headline { font-size: 14px !important; margin-bottom: 14px !important; }
+      .btn-cta a { padding: 16px 12px !important; }
+      .btn-cta .btn-cta-primary { font-size: 14px !important; white-space: normal !important; word-break: break-word !important; }
+      .btn-cta .btn-cta-sub { font-size: 11px !important; margin-top: 5px !important; }
+      .footer-nav .footer-dot { display: none !important; }
+      .footer-nav a { display: block !important; padding: 8px 0 !important; font-size: 12px !important; }
+      .footer-copy { font-size: 10px !important; }
     }
 
-    /* Animated slideshow — positioning/sizing is on inline styles so it cannot be stripped */
-    .slide-stack .s { animation: slide-fade 16s linear infinite; }
-    .slide-stack .s1 { animation-delay: 0s; }
-    .slide-stack .s2 { animation-delay: 4s; }
-    .slide-stack .s3 { animation-delay: 8s; }
-    .slide-stack .s4 { animation-delay: 12s; }
-    @keyframes slide-fade {
-      0%   { opacity: 0; }
-      3%   { opacity: 1; }
-      25%  { opacity: 1; }
-      28%  { opacity: 0; }
-      100% { opacity: 0; }
+    @media screen and (max-width: 375px) {
+      .outer-pad { padding: 12px 8px !important; }
+      .px-32 { padding-left: 8px !important; padding-right: 8px !important; }
+      .card-inner { padding: 12px 8px !important; }
+      .card-headline { font-size: 13px !important; }
+      .btn-cta .btn-cta-primary { font-size: 13px !important; }
+    }
+
+    .btn-cta a:hover {
+      box-shadow: 0 12px 36px rgba(251,191,36,0.55), inset 0 1px 0 rgba(255,255,255,0.45) !important;
     }
   </style>
 </head>
-<body style="margin:0;padding:0;background:#ffffff;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+<body style="margin:0;padding:0;background:#f1f5f9;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;">
 
-  <!-- Preheader (hidden) -->
-  <div style="display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
+  <div style="display:none;font-size:1px;color:#f1f5f9;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
     Your Amazon images may be costing you clicks, trust and conversions. Get 5 updated AI Amazon Listing Images for $5 each!
   </div>
 
-  <!-- Gmail-safe white background wrapper -->
-  <div style="background:#ffffff;min-height:100vh;margin:0;padding:0;">
+  <div style="background:#f1f5f9;min-height:100vh;margin:0;padding:0;">
 
-  <!-- ═══ Outer wrapper ═══ -->
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" style="background:#ffffff;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f1f5f9" style="background:#f1f5f9;">
     <tr>
-      <td align="center" bgcolor="#ffffff" style="padding:32px 16px;background:#ffffff;">
+      <td class="outer-pad" align="center" bgcolor="#f1f5f9" style="padding:40px 16px;background:#f1f5f9;">
 
-        <!-- ═══ Email container ═══ -->
-        <table role="presentation" class="container" width="480" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:480px;">
+        <table role="presentation" class="container" width="560" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:560px;">
 
-          <!-- ─── Subheader / rating ─── -->
+          <!-- Rating pill -->
           <tr>
-            <td align="center" style="padding:0 32px 28px 32px;">
-              <span style="display:inline-block;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:24px;color:#FFD700;letter-spacing:4px;">★ ★ ★ ★ ★</span>
-              <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;font-weight:700;color:#64748b;margin-top:6px;">
-                Trusted by 1,000+ Amazon sellers
-              </div>
+            <td class="subheader-pad" align="center" style="padding:0 24px 24px 24px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="background:#ffffff;border-radius:999px;box-shadow:0 2px 12px rgba(9,23,57,0.06);">
+                <tr>
+                  <td style="padding:10px 20px;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:13px;font-weight:600;color:#334155;line-height:1.4;">
+                    <span class="rating-stars" style="color:#f59e0b;letter-spacing:2px;font-size:15px;">★★★★★</span>
+                    <span class="rating-text" style="margin-left:8px;">Trusted by 1,000+ Amazon sellers</span>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
 
-          <!-- ═══ THE CARD ═══ -->
+          <!-- Main card -->
           <tr>
-            <td class="px-32" style="padding:0 16px 32px 16px;">
-              <!-- Card outer -->
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#091739;border-radius:18px;box-shadow:0 4px 24px rgba(0,0,0,0.10);">
+            <td class="px-32" style="padding:0 12px 28px 12px;">
+              <!-- Gold accent bar -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td class="card-inner" style="padding:22px;">
+                  <td height="4" style="height:4px;line-height:4px;font-size:0;background:linear-gradient(90deg,#fbbf24,#f59e0b,#fbbf24);border-radius:18px 18px 0 0;">&nbsp;</td>
+                </tr>
+              </table>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#091739;border-radius:0 0 20px 20px;box-shadow:0 8px 32px rgba(9,23,57,0.18),0 2px 8px rgba(9,23,57,0.08);">
+                <tr>
+                  <td class="card-inner" style="padding:24px 22px 26px 22px;">
 
-                    <!-- Single-column layout: image row, then text+CTA row -->
+                    <!-- Offer badge -->
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-                      <!-- Row 1: Slideshow image -->
                       <tr>
-                        <td align="center" style="padding:0 0 20px 0;">
-                          <!--[if mso]>
-                            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-radius:12px;background:#e2e8f0;">
-                              <tr>
-                                <td style="padding:0;" width="440" height="440" bgcolor="#e2e8f0">
-                                  <img src="https://i.ibb.co/svT1NJMq/hero-before.jpg" width="440" height="440" alt="AI Amazon listing preview" style="display:block;width:100%;height:440px;border:0;outline:none;border-radius:12px;" />
-                                </td>
-                              </tr>
-                            </table>
-                            <![endif]-->
-                            <!--[if !mso]><!-- -->
-                            <div style="position:relative;width:100%;height:440px;background:#e2e8f0;border-radius:12px;overflow:hidden;line-height:0;font-size:0;">
-                              <img src="https://engin8.io/campaign/assets/images/ai-generated-images.gif" class="s s1" alt="After 1 — Quality You Can Trust" style="position:absolute;top:0;left:0;display:block;width:100%;height:440px;object-fit:cover;object-position:center;border-radius:12px;opacity:1;" />
-                            <!--<![endif]-->
+                        <td align="center" style="padding:0 0 16px 0;">
+                          <span style="display:inline-block;background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.35);color:#fbbf24;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:6px 14px;border-radius:999px;">
+                            $25 Starter Pack · 5 images
+                          </span>
                         </td>
                       </tr>
-                      <!-- Row 2: Headline + CTA -->
-                      <tr>
-                        <td align="center" style="padding:0;">
-                          <p class="card-headline" style="margin:0 0 18px 0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.55;color:#f1f5f9;font-weight:500;text-align:center;">
-                            Your Amazon images may be costing you <strong style="color:#ffffff;">clicks, trust and conversions</strong>. Get 5 updated AI Amazon Listing Images for <strong style="color:#fbbf24;">$5 each!</strong>
-                          </p>
+                    </table>
 
-                          <!-- Bulletproof gold CTA -->
-                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                    <!-- Hero image -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td align="center" style="padding:0 0 20px 0;">
+                          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0f2744;border-radius:14px;border:1px solid rgba(255,255,255,0.08);">
                             <tr>
-                              <td align="center" style="padding:0;">
+                              <td align="center" bgcolor="#0f2744" style="padding:0;line-height:0;font-size:0;background:#0f2744;border-radius:14px;">
                                 <!--[if mso]>
-                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="./landing-page.html" style="height:48px;v-text-anchor:middle;width:380px;" arcsize="20%" stroke="f" fillcolor="#f59e0b">
-                                  <w:anchorlock/>
-                                  <center style="color:#0d1844;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;font-weight:bold;">Start with the AI Amazon Image Conversion Starter Pack<br/>Ideas for Image / video ?</center>
-                                </v:roundrect>
+                                <img src="https://i.ibb.co/svT1NJMq/hero-before.jpg" width="512" height="auto" alt="AI Amazon listing preview" style="display:block;width:512px;height:auto;border:0;outline:none;border-radius:14px;" />
                                 <![endif]-->
                                 <!--[if !mso]><!-- -->
-                                <a href="https://engin8.io/campaign/landing-page.html" style="background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#0d1844;display:block;width:100%;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;font-weight:900;letter-spacing:-0.2px;line-height:1.2;padding:15px 22px;border-radius:10px;text-decoration:none;text-align:center;box-sizing:border-box;">
-                                  Start with the AI Amazon Image Conversion <br/>Starter Pack Ideas for Image / video ?
-                                </a>
+                                <img class="hero-img" src="https://engin8.io/campaign/assets/images/ai-generated-images.gif" width="512" alt="AI Amazon listing preview — before and after examples" style="display:block;width:100%;max-width:512px;height:auto;border:0;outline:none;border-radius:14px;-ms-interpolation-mode:bicubic;" />
                                 <!--<![endif]-->
                               </td>
                             </tr>
                           </table>
+                        </td>
+                      </tr>
+                    </table>
 
+                    <!-- Copy -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td align="center" style="padding:0 0 18px 0;">
+                          <p class="card-eyebrow" style="margin:0 0 10px 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#94a3b8;text-align:center;">
+                            Fix your listing visuals
+                          </p>
+                          <p class="card-headline" style="margin:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:18px;line-height:1.5;color:#f1f5f9;font-weight:500;text-align:center;">
+                            Your Amazon images may be costing you <strong style="color:#ffffff;font-weight:700;">clicks, trust and conversions</strong>.
+                          </p>
+                          <p class="card-headline" style="margin:12px 0 0 0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.5;color:#cbd5e1;font-weight:400;text-align:center;">
+                            Get <strong style="color:#fbbf24;font-weight:800;">5 AI listing images</strong> for <strong style="color:#fbbf24;font-weight:800;">$5 each</strong> — professional quality, fast delivery.
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Benefits -->
+                    <table role="presentation" class="benefits-bar" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:20px;background:rgba(255,255,255,0.06);border-radius:10px;">
+                      <tr>
+                        <td align="center" style="padding:14px 20px;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;line-height:1.5;color:#cbd5e1;">
+                          <span class="benefit-item" style="display:inline-block;white-space:nowrap;">
+                            <span style="color:#22d3ee;font-weight:700;">✓</span>
+                            <span style="color:#f1f5f9;font-weight:600;"> Pro quality</span>
+                          </span>
+                          <span class="benefit-dot" style="color:#475569;padding:0 10px;">·</span>
+                          <span class="benefit-item" style="display:inline-block;white-space:nowrap;">
+                            <span style="color:#22d3ee;font-weight:700;">✓</span>
+                            <span style="color:#f1f5f9;font-weight:600;"> Fast turnaround</span>
+                          </span>
+                          <span class="benefit-dot" style="color:#475569;padding:0 10px;">·</span>
+                          <span class="benefit-item" style="display:inline-block;white-space:nowrap;">
+                            <span style="color:#fbbf24;font-weight:800;">$5</span>
+                            <span style="color:#f1f5f9;font-weight:600;"> per image</span>
+                          </span>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- CTA -->
+                    <table role="presentation" class="btn-cta" cellpadding="0" cellspacing="0" border="0" width="100%">
+                      <tr>
+                        <td align="center" style="padding:0;">
+                          <!--[if mso]>
+                          <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://engin8.io/campaign/landing-page.html" style="height:56px;v-text-anchor:middle;width:100%;" arcsize="18%" strokecolor="#fcd34d" strokeweight="1px" fillcolor="#f59e0b">
+                            <w:anchorlock/>
+                            <center style="color:#0d1844;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:15px;font-weight:bold;line-height:1.35;">
+                              Get the $25 AI Amazon Image Starter Pack<br/>
+                              <span style="font-size:12px;font-weight:600;">5 listing images · $5 each — see ideas</span>
+                            </center>
+                          </v:roundrect>
+                          <![endif]-->
+                          <!--[if !mso]><!-- -->
+                          <a href="https://engin8.io/campaign/landing-page.html" style="background:linear-gradient(135deg,#fde68a 0%,#fbbf24 45%,#f59e0b 100%);color:#0d1844;display:block;width:100%;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-weight:900;letter-spacing:-0.2px;line-height:1.35;padding:18px 26px;border-radius:12px;text-decoration:none;text-align:center;box-sizing:border-box;border:1px solid rgba(255,255,255,0.4);box-shadow:0 8px 28px rgba(251,191,36,0.42),inset 0 1px 0 rgba(255,255,255,0.45);">
+                            <span class="btn-cta-primary" style="display:block;font-size:15px;line-height:1.25;">Get the $25 AI Amazon Image Starter Pack</span>
+                            <span class="btn-cta-sub" style="display:block;margin-top:6px;font-size:12.5px;font-weight:700;letter-spacing:0.1px;color:rgba(13,24,68,0.82);">5 listing images · $5 each — see image &amp; video ideas →</span>
+                          </a>
+                          <!--<![endif]-->
                         </td>
                       </tr>
                     </table>
@@ -151,41 +232,34 @@
             </td>
           </tr>
 
-          <!-- ─── Divider ─── -->
+          <!-- Footer -->
           <tr>
-            <td style="padding:8px 32px;">
-              <div style="height:1px;line-height:1px;font-size:1px;background:rgba(0,0,0,0.08);">&nbsp;</div>
-            </td>
-          </tr>
-
-          <!-- ─── Footer ─── -->
-          <tr>
-            <td align="center" style="padding:24px 32px 4px 32px;">
-              <p style="margin:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;color:#091739;line-height:1.6;max-width:420px;">
+            <td align="center" style="padding:8px 24px 4px 24px;">
+              <p class="footer-text" style="margin:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;color:#475569;line-height:1.65;max-width:480px;">
                 Premium AI image conversion for Amazon sellers — built to lift CTR and conversions on every listing.
               </p>
             </td>
           </tr>
           <tr>
-            <td align="center" style="padding:14px 32px 4px 32px;">
-              <a href="https://engin8.io/" target="_blank" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:#091739;text-decoration:none;padding:0 10px;">How it works</a>
-              <span style="color:#091739;">·</span>
-              <a href="https://engin8.io/" target="_blank" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:#091739;text-decoration:none;padding:0 10px;">Pricing</a>
-              <span style="color:#091739;">·</span>
-              <a href="https://engin8.io/" target="_blank" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:#091739;text-decoration:none;padding:0 10px;">Support</a>
+            <td class="footer-nav" align="center" style="padding:14px 24px 4px 24px;">
+              <a href="https://engin8.io/" target="_blank" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11.5px;color:#091739;font-weight:600;text-decoration:none;padding:0 10px;">How it works</a>
+              <span class="footer-dot" style="color:#cbd5e1;">·</span>
+              <a href="https://engin8.io/" target="_blank" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11.5px;color:#091739;font-weight:600;text-decoration:none;padding:0 10px;">Pricing</a>
+              <span class="footer-dot" style="color:#cbd5e1;">·</span>
+              <a href="https://engin8.io/" target="_blank" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11.5px;color:#091739;font-weight:600;text-decoration:none;padding:0 10px;">Support</a>
             </td>
           </tr>
           <tr>
-            <td align="center" style="padding:18px 32px 8px 32px;">
-              <p style="margin:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:10.5px;color:#091739;letter-spacing:0.3px;">
+            <td align="center" style="padding:18px 24px 8px 24px;">
+              <p class="footer-copy" style="margin:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:10.5px;color:#94a3b8;letter-spacing:0.3px;">
                 © 2026 Engin8. All rights reserved.
               </p>
             </td>
           </tr>
           <tr>
-            <td align="center" style="padding:8px 32px 24px 32px;">
-              <p style="margin:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:10.5px;color:#091739;line-height:1.6;">
-                You're receiving this because you signed up for Engin8 updates. <a href="#" style="color:#091739;text-decoration:underline;">Unsubscribe</a>
+            <td align="center" style="padding:8px 24px 32px 24px;">
+              <p class="footer-copy" style="margin:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:10.5px;color:#94a3b8;line-height:1.6;">
+                You're receiving this because you signed up for Engin8 updates. <a href="#" style="color:#64748b;text-decoration:underline;">Unsubscribe</a>
               </p>
             </td>
           </tr>
@@ -196,7 +270,7 @@
     </tr>
   </table>
 
-  </div><!-- /Gmail-safe white background wrapper -->
+  </div>
 
 </body>
 </html>

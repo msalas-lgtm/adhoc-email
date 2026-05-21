@@ -1767,14 +1767,13 @@
 
   <!-- ══════════════════════════════════════
        CHECKOUT
-  ══════════════════════════════════════ -->
   <section class="offer-stack" id="offer-stack">
     <div class="inner offer-stack-inner reveal">
       <div class="section-label gold">Ready When You Are</div>
       <div class="section-headline">Claim your starter pack — <span class="pg">$5</span> per image.</div>
       <p class="section-sub">Three quick steps: drop your ASIN, book a 15-minute onboarding call, and pay securely. Your refreshed Amazon listing images ship within 48 hours.</p>
       <div style="max-width:1024px;margin:0 auto;">
-        <!-- CHECKOUT PANEL -->
+
         <div class="checkout-panel">
           <div class="checkout-panel-header">Checkout</div>
           <div class="checkout-panel-body">
@@ -1783,23 +1782,22 @@
               Three quick steps to get your AI-converted Amazon listing images — starting at <strong>$25</strong>.
             </div>
 
-            <!-- ── Zoho Web-to-Lead form wraps Step 1 ── -->
+
             <form id="checkout-form" novalidate
                   action="https://crm.zoho.com/crm/WebToLeadForm"
                   method="POST"
                   accept-charset="UTF-8">
 
-              <!-- ─── TODO: paste your Zoho-generated hidden fields here ─── -->
+
               <input type="hidden" name="xnQsjsdp"     value="" />
               <input type="hidden" name="xmIwtLD"      value="" />
               <input type="hidden" name="actionType"   value="TGVhZHM=" />
               <input type="hidden" name="returnURL"    value="" />
               <input type="hidden" name="Lead Source"  value="Landing Page — $5 Starter Pack" />
-              <!-- Hidden mirror so the ASIN lands cleanly in Zoho's Description -->
+
               <input type="hidden" name="Description"  id="cf-description" value="" />
 
-              <!-- STEP 1 — Your details + ASIN -->
-              <div class="co-step" id="co-step-1">
+             <div class="co-step" id="co-step-1">
                 <div class="co-step-head">
                   <div class="co-step-num">1</div>
                   <div class="co-step-title">Tell us about your listing</div>
@@ -1845,7 +1843,7 @@
               </div>
             </form>
 
-            <!-- PAYMENT (intentionally not labeled as a step) -->
+
             <div class="co-pay" id="co-pay">
               <a href="#" id="co-pay-btn" class="btn-checkout-panel"
                  data-payment-url="">
@@ -1874,6 +1872,9 @@
       </div>
     </div>
   </section>
+
+
+    ══════════════════════════════════════ -->
 
   <!-- ══════════════════════════════════════
        FOOTER
